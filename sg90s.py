@@ -1,7 +1,15 @@
 #!/usr/bin/env python3 
 #-*- coding: utf-8 -*- 
 # 30 11 * * * /hp-printer-sg90-web-python/sg90s.py
-print(2)
+import configparser
+config = configparser.ConfigParser()
+config.read('config.ini', encoding='utf-8')
+pin = config['DEFAULT']['pin']
+end_angle = config['DEFAULT']['end_angle']
+# items = con.items('url')
+
+print(pin)
+print(end_angle)
 """
 import RPi.GPIO as GPIO
 import time
