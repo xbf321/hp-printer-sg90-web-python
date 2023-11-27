@@ -1,19 +1,14 @@
 from flask import Flask
-import configparser
-
-# https://docs.python.org/3/library/configparser.html
-config = configparser.ConfigParser()
-configFilePath = 'config.ini'
+import subprocess
 
 app = Flask(__name__)
 
 @app.route('/')
+@app.route('/alive')
 def index():
-  config.set('DEFAULT', 'end_angle', '15')
-  with open(configFilePath, 'w') as configfile:
-    config.write(configfile)
-  return "<p>Hello, World!23</p>"
+  return "Hello world"
 
-@app.route('/reboot')
-def reboot():
-  return "reboot"
+@app.route('/go')
+def go():
+  subprocess.Popen(["./sg90s.py"])
+  return "go"
