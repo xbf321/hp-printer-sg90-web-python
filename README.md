@@ -28,7 +28,7 @@ flask run --debug --port 7040
 
 ## 上线
 ```
-gunicorn app:app -D -c gunicorn.conf.py
+sh run
 ```
 
 ## 其他：

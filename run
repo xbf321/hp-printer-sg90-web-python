@@ -1,0 +1,13 @@
+#!/bin/sh
+# chmod u+x run
+
+GUNICORN=/usr/local/bin/gunicorn
+ROOT=/opt/x/hp-printer-sg90-web-python
+PID=/var/run/gunicorn.pid
+
+APP=app:app
+
+if [ -f $PID ]; then rm $PID; fi
+
+cd $ROOT
+exec $GUNICORN -D -c $ROOT/gunicorn.conf.py --pid=$PID $APP

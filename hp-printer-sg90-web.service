@@ -1,0 +1,15 @@
+[Unit]
+Description=HP Printer SG90 Web Service
+After=network.target nss-lookup.target
+
+[Service]
+Type=forking
+NoNewPrivileges=true
+PIDFile=/var/run/gunicorn.pid
+ExecStart=/usr/bin/sh /opt/x/hp-printer-sg90-web-python/run
+Restart=on-failure
+RestartSec=10s
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
